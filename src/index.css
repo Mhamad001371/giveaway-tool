@@ -1,9 +1,11 @@
+@import url("https://db.onlinewebfonts.com/c/dc9a8bb1a3a65504c8d90566a26d5327?family=NRT+Reg");
 @import "tailwindcss";
 
 @theme {
   --color-ultraviolet: #7c3aed;
   --color-neon-indigo: #4f46e5;
   --color-neon-emerald: #10b981;
+  --font-sans: "NRT Reg", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @layer base {
