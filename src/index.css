@@ -1,17 +1,32 @@
-@import url("https://db.onlinewebfonts.com/c/dc9a8bb1a3a65504c8d90566a26d5327?family=NRT+Reg");
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'NRT';
+  src: local('NRT'), local('NRT-Reg'), url('/fonts/NRT-Reg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* Arabic script unicode range covering Kurdish letters */
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
 
 @theme {
   --color-ultraviolet: #7c3aed;
   --color-neon-indigo: #4f46e5;
   --color-neon-emerald: #10b981;
-  --font-sans: "NRT Reg", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Set default font to system UI first, then NRT for Kurdish */
+  --font-sans: "Inter", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden;
+    @apply bg-slate-950 text-slate-100 antialiased overflow-x-hidden;
+    /* We place Inter and other English fonts before NRT. NRT is only called via unicode-range for Kurdish text */
+    font-family: var(--font-sans);
   }
 }
 
-
+/* Explicitly set NRT for RTL (Kurdish) content as a fallback or override */
+[dir="rtl"] {
+  font-family: 'Inter', 'NRT', var(--font-sans);
+}
